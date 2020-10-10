@@ -4,7 +4,7 @@ class DevelopersController < ApplicationController
   end
 
   def create
-    @developer = Developer.create(developer_params)
+    @developer = Developer.create!(developer_params)
     redirect_to root_path
   end
 
@@ -15,6 +15,12 @@ class DevelopersController < ApplicationController
   end
 
   def delete
+  end
+
+  def confirm
+    @dev = Developer.find_by_uuid(params[:uuid])
+    @dev.update!(confirmed: true)
+    redirect_to root_path
   end
 
   private
