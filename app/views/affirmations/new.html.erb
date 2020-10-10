@@ -1,0 +1,12 @@
+<div class="col-md-6 offset-md-3">
+    <h1>Submit an Affirmation</h1>
+    <%= form_for @affirmation  do |f| %>
+
+    <div class="form-group">
+        <%= f.label :affirmation%><br />
+        <%= f.text_area :affirmation, placeholder: "Submit your affirmation", id: "affirmations", class: "form-control" %>
+    </div>
+
+    <%= f.submit "Create", class: "cta"%>
+    <% end %>
+</div>
