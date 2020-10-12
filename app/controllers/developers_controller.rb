@@ -20,8 +20,9 @@ class DevelopersController < ApplicationController
     render xml: twiml.to_xml
   end
 
-
   def delete
+    @dev = Developer.find_by_phone_number(params[:From])
+    @dev.delete
   end
 
   def preconfirm
@@ -31,6 +32,7 @@ class DevelopersController < ApplicationController
   def confirm
     @dev = Developer.find_by_uuid(params[:developer_uuid])
     @dev.update!(confirmed: true)
+    # TODO change this to HTML
     twiml = Twilio::TwiML::MessagingResponse.new do |r|
       r.message body: "Your number has been confirmed!"
     end
