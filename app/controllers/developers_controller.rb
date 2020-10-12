@@ -1,31 +1,40 @@
 class DevelopersController < ApplicationController
-  def new
-    @developer = Developer.new
+  skip_before_action :verify_authenticity_token
+
+  def receive
+    req_body = params['Body'].downcase
+    if req_body == "affirm"
+      create
+    elsif req_body == "stop"
+      delete
+    end
   end
 
   def create
-    @developer = Developer.create!(developer_params)
-    redirect_to root_path
+    @dev = Developer.create!(phone_number: params[:From])
+    uuid = @dev.uuid
+    twiml = Twilio::TwiML::MessagingResponse.new do |r|
+      r.message body: "Hi! You registered to receive developer affirmations. Confirm your registration here: #{developer_preconfirm_url(uuid)} . If you don't confirm your number will be deleted from the database in 2 days."
+    end
+
+    render xml: twiml.to_xml
   end
 
-  def edit
-  end
-
-  def update
-  end
 
   def delete
   end
 
-  def confirm
-    @dev = Developer.find_by_uuid(params[:uuid])
-    @dev.update!(confirmed: true)
-    redirect_to root_path
+  def preconfirm
+    confirm
   end
 
-  private
+  def confirm
+    @dev = Developer.find_by_uuid(params[:developer_uuid])
+    @dev.update!(confirmed: true)
+    twiml = Twilio::TwiML::MessagingResponse.new do |r|
+      r.message body: "Your number has been confirmed!"
+    end
 
-  def developer_params
-    params.require(:developer).permit(:phone_number, :twilio_uid, :confirmed)
+    render xml: twiml.to_xml
   end
 end
