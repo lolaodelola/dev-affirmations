@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Affirmation', driver: :selenium_chrome, js: true, type: :system do
+RSpec.describe 'Affirmation' do
   setup do
     @confirmed_dev = Developer.create(phone_number: "1234456", confirmed: true)
     @unconfirmed_dev = Developer.create(phone_number: "6789876544", confirmed: false)

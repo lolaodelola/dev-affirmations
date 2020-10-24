@@ -1,12 +1,7 @@
 {
-  "name": "Small Sharp Tool",
-  "description": "This app does one little thing, and does it well.",
-  "keywords": [
-    "productivity",
-    "HTML5",
-    "scalpel"
-  ],
-  "repository": "https://github.com/jane-doe/small-sharp-tool",
+  "name": "Dev Affirmations",
+  "description": "Affirmations for developers",
+  "repository": "https://github.com/lolaodelola/dev-affirmations",
 
   "formation": {
     "web": {
