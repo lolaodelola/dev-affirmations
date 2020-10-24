@@ -1,0 +1,38 @@
+{
+  "name": "Small Sharp Tool",
+  "description": "This app does one little thing, and does it well.",
+  "keywords": [
+    "productivity",
+    "HTML5",
+    "scalpel"
+  ],
+  "repository": "https://github.com/jane-doe/small-sharp-tool",
+
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "hobby-dev"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    {
+      "plan": "heroku-postgresql"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby"
+    }
+  ],
+  "environments": {
+    "test": {
+      "addons":[
+        "heroku-postgresql"
+      ]
+    },
+    "scripts": {
+      "test": "bundle exec rspec spec"
+    }
+  }
+}
