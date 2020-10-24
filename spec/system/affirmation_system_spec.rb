@@ -1,9 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Affirmation', driver: :selenium_chrome, js: true, type: :system do
-  before do
-    driven_by(:rack_test)
-  end
+RSpec.describe 'Affirmation', type: :system do
 
   it 'enables me to create affirmations' do
     visit '/'
