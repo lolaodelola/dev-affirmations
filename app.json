@@ -24,10 +24,14 @@
     "test": {
       "addons":[
         "heroku-postgresql"
-      ]
-    },
-    "scripts": {
-      "test": "bundle exec rspec spec"
+      ],
+      "buildpacks": [
+        { "url": "heroku/google-chrome" },
+        { "url":  "heroku/ruby" }
+      ],
+      "scripts": {
+        "test": "bundle exec rspec spec"
+      }
     }
   }
 }
