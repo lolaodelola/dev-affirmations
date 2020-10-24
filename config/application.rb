@@ -26,6 +26,7 @@ module DevAffirmations
     config.autoload_paths << Rails.root.join('lib')
     config.active_job.queue_adapter = :delayed_job
     config.hosts << 'd9a096eafd2a.ngrok.io'
+    config.hosts << '127.0.0.1'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

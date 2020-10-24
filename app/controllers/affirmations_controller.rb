@@ -6,7 +6,7 @@ class AffirmationsController < ApplicationController
 
   def create
     @affirmation = Affirmation.create(affirmation_params)
-    redirect_to root_path
+    redirect_to root_path, notice: 'Your affirmation has been created! How about another one?'
   end
 
   private
