@@ -26,6 +26,7 @@
         "heroku-postgresql"
       ],
       "buildpacks": [
+        { "url": "heroku/chromedriver" },
         { "url": "heroku/google-chrome" },
         { "url":  "heroku/ruby" }
       ],
