@@ -2,14 +2,17 @@ class SendAffirmationJob < ApplicationJob
   queue_as :default
 
   def deliver(dev, affirmation)
-    if Rails.env != 'test'
-      AffirmationText.new.message(dev.phone_number, affirmation.affirmation)
-    else
-      MockAffirmationText.new.message(dev.phone_number, affirmation.affirmation)
-    end
-    SentAffirmation.create!(developer_id: dev.id, affirmation_id: affirmation.id, sent_at: DateTime.now)
+    Rails.env != 'test' ? send_prod(dev, affirmation) : send_test(dev, affirmation)
   end
   handle_asynchronously :deliver
+
+  def send_prod(dev, affirmation)
+    AffirmationText.new.message(dev.phone_number, affirmation.affirmation)
+  end
+
+  def send_test(dev, affirmation)
+    MockAffirmationText.new.message(dev.phone_number, affirmation.affirmation)
+  end
 end
 
 class MockAffirmationText
