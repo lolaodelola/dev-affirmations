@@ -1,5 +1,9 @@
 class AffirmationsController < ApplicationController
 
+  def landing
+    render 'landing'
+  end
+  
   def new
     @affirmation = Affirmation.new
   end

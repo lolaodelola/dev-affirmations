@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    background-color: floralwhite;
+}
+h1 {
+    font-family: Serif;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    color: cornflowerblue;
+    font-size: 6rem;
+}
+
+p {
+    font-size: 2.5rem;
+    font-weight: 200;
+}
+
+.cta {
+    background-color: seagreen;
+    border: none;
+    color: floralwhite;
+}
+
+.cta:hover {
+    color: floralwhite;
+    background-color: cornflowerblue;
+}
