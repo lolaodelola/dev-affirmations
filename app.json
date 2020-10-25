@@ -32,6 +32,10 @@
       ],
       "scripts": {
         "test": "bundle exec rspec spec"
+      },
+      "env": {
+        "DATABASE_CLEANER_ALLOW_PRODUCTION": true,
+        "DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL": true
       }
     }
   }
