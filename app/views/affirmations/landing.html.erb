@@ -4,7 +4,7 @@
 
   <p>Does your failing test suite get you down? Do you spend late nights bug hunting
     only to discover the culprit was a semi-colon?</p>
-  <p>Sign up for weekly affirmations just for you! Text "AFFIRM" to [NUMBER] now!</p>
+  <p>Sign up for weekly affirmations just for you! Text "AFFIRM" to <%= ENV['TWILIO_NUMBER']%> now!</p>
   <p>Or, if you have wisdom to share, why not <%= link_to "submit an affirmation", new_affirmation_path %>.</p>
 
 </div>
